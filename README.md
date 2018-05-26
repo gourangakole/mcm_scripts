@@ -11,6 +11,6 @@ python clone_example.py 4000
 
 # to get all chain and their prep-ids given a root request 
 
-python get_chains.py <root_request>
-e.g
-python get_chains.py HIG-RunIIFall17wmLHEGS-00532
+python get_chains.py <root_request> <br />
+e.g <br />
+python get_chains.py HIG-RunIIFall17wmLHEGS-00532 <br />
