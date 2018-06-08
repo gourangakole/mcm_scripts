@@ -1,3 +1,9 @@
+#========
+# this script will clone a given example and make changes to extension=1 with required number of events
+# uses: python clone_example.py original-req number-of-required-events 
+# e.g. python clone_example.py HIG-RunIIFall17wmLHEGS-00545 200000
+#========          
+
 import sys
 sys.path.append('/afs/cern.ch/cms/PPD/PdmV/tools/McM/')
 
@@ -12,15 +18,15 @@ print "The arguments are: " , str(sys.argv)
 from rest import *
 
 mcm = restful(dev=False) #it was True
-
-print sys.argv[1]
+given_req = sys.argv[1]
 # script clones a request to other campaign.
 # define list modifications, if member_of_campaign is different
 # it will clone to other campaign
 
 
-modif = {'extension' : 1, 'total_events' : sys.argv[1]}
-__req_prepid = "HIG-RunIIFall17wmLHEGS-01355"
+modif = {'extension' : 1, 'total_events' : sys.argv[2]}
+#__req_prepid = "HIG-RunIIFall17wmLHEGS-01355"
+__req_prepid = given_req
 
 # get a request object which we want to clone
 a_request = mcm.getA('requests', __req_prepid)
