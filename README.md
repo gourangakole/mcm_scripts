@@ -6,8 +6,9 @@ Repository holding examples of McM scripts
 cern-get-sso-cookie -u https://cms-pdmv.cern.ch/mcm/ -o ~/private/prod-cookie.txt —krb
 
 # example to make clone
-# uses: python clone_example.py original-req number-of-required-events                                                                                       <br /> 
-# e.g. python clone_example.py HIG-RunIIFall17wmLHEGS-00545 200000      
+uses: python clone_example.py original-req number-of-required-events
+<br /> 
+e.g. python clone_example.py HIG-RunIIFall17wmLHEGS-00545 200000      
 
 
 # to get all chain and their prep-ids given a root request 
