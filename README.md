@@ -1,6 +1,19 @@
 # McM Scripts
 Repository for using McM scripts and example scripts
 
+# All you need
+```
+source get_Cookie.sh
+e.g. do python modify_request_core.py -h
+# To change core:
+python modify_request_core.py --prepid HIG-RunIIFall18wmLHEGS-03028 --core 2
+# To change memory:
+python modify_request_memory.py --prepid HIG-RunIIFall18wmLHEGS-03028 --memory 2100
+# To approve for next steps:
+python request_approve.py --prepid HIG-RunIIFall18wmLHEGS-03028 0
+```
+
+
 ### Basic info
 * Link to McM: https://cms-pdmv.cern.ch/mcm/
 * McM Rest API: https://cms-pdmv.cern.ch/mcm/restapi
