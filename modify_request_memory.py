@@ -13,10 +13,13 @@ from listOfFunctions import *
 parser = ArgumentParser()
 parser.add_argument('--prepid', type=str, help="check mcm requests using prepids",dest="prepid")
 parser.add_argument("--memory",type=int, help="memory should be 4000 (otherwise 2300 if 1 core)",dest="memory")
+parser.add_argument('--lowerprepid', type=str, help="lowest prepid",dest="lowerprepid")
+parser.add_argument('--upperprepid', type=str, help="upper prepid",dest="upperprepid")
+parser.add_argument('--activeRange',dest="activeRange", default=False, help="use True or False")
 
 args = parser.parse_args()
 
-
+    
 print "Number of arguments: ", len(sys.argv)
 print "The arguments are: " , str(sys.argv)
 
@@ -25,7 +28,16 @@ mcm = McM(dev=False)
 # Example to edit a request parameter(-s) and save it back in McM
 # request_prepid_to_update = 'HIG-Summer12-01257' # Doesn't exist
 #given_req = sys.argv[1]
-prepids = parseIDList(args.prepid)
+if(args.activeRange):
+    prepidlists = ListOfPrepids(args.lowerprepid,args.upperprepid)
+    print('prepidlists',prepidlists)
+
+#prepids = parseIDList(args.prepid)
+if(args.activeRange):
+    prepids = prepidlists
+else:
+    prepids = parseIDList(args.prepid)
+
 print('prepid',prepids)
 print "Approving {0} base requests".format(len(prepids))
 

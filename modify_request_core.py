@@ -12,18 +12,29 @@ from listOfFunctions import *
 parser = ArgumentParser()
 parser.add_argument('--prepid', type=str, help="put mcm requests using prepids for multiple use comma[e.g, HIG-RunIIFall18wmLHEGS-02657,HIG-RunIIFall18wmLHEGS-02660]",dest="prepid")
 parser.add_argument("--core",type=str, help="number should be 8, 4, 2 or 1",dest="core")
-
+parser.add_argument('--lowerprepid', type=str, help="lowest prepid",dest="lowerprepid")
+parser.add_argument('--upperprepid', type=str, help="upper prepid",dest="upperprepid")
+parser.add_argument('--activeRange',dest="activeRange", default=False, help="use True or False")
 args = parser.parse_args()
 
 
-print "Number of arguments: ", len(sys.argv)
-print "The arguments are: " , str(sys.argv)
+#print "Number of arguments: ", len(sys.argv)
+#print "The arguments are: " , str(sys.argv)
 
 mcm = McM(dev=False)
 
 # Example to edit a request parameter(-s) and save it back in McM
 # request_prepid_to_update = 'HIG-Summer12-01257' # Doesn't exist
-prepids = parseIDList(args.prepid)
+if(args.activeRange):
+    prepidlists = ListOfPrepids(args.lowerprepid,args.upperprepid)
+    print('prepidlists',prepidlists)
+
+#prepids = parseIDList(args.prepid)
+if(args.activeRange):
+    prepids = prepidlists
+else:
+    prepids = parseIDList(args.prepid)
+
 print('prepid',prepids)
 print "Updating {0} base requests".format(len(prepids))
 
@@ -41,7 +52,6 @@ for prepid in prepids:
         print('Request\'s "%s" field "%s" BEFORE update: %s' % (request_prepid_to_update,
                                                             field_to_update,
                                                             request[field_to_update]))
-
         # Modify what we want
         # time_event is a list for each sequence step
         #request[field_to_update] = [4]
