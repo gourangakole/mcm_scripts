@@ -28,8 +28,8 @@ for chain in allChains:
 
     #new_format[chain['prepid']] = chain['chain'] # more for json format
     ## PART BELOW (2 line) to get a single request and hostory who created
-    #single_req = mcm.getA('requests', chain['chain'][0], method='get')
-    #print(json.dumps(single_req["history"][0], indent=2))
+    # single_req = mcm.getA('requests', chain['chain'][0], method='get')
+    # print(json.dumps(single_req["history"][0], indent=4))
 
 #print(json.dumps(new_format, indent=4))
 

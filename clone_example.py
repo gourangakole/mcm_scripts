@@ -37,3 +37,6 @@ for el in modif:
 
 answer = mcm.clone(a_request['prepid'], a_request)
 print("new_prepid: %s" % (answer["prepid"]))
+
+single_req = mcm.getA('requests', answer["prepid"], method='get')                                                                                                                                  
+print(json.dumps(single_req["history"][0], indent=4))
